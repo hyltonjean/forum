@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Dashboard</div>
+        <div class="card-header">Laravel Forum</div>
 
         <div class="card-body">
           @if (session('status'))
@@ -16,7 +16,7 @@
 
           <p>My name: {{Auth::user()->name}}</p>
           <p>My Email: {{Auth::user()->email}}</p>
-          <img alt="{{Auth::user()->name}}" src="{{Auth::user()->image}}" width="60px" height="60px" />
+          <img alt="{{Auth::user()->name}}" src="{{Auth::user()->avatar}}" width="60px" height="60px" />
         </div>
       </div>
     </div>

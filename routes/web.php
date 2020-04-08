@@ -24,3 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login/{provider}', 'SocialsController@redirect')->name('login.provider');
 Route::get('login/{provider}/callback', 'SocialsController@Callback')->name('login.callback');
+
+Route::middleware(['auth'])->group(function () {
+  Route::resource('channels', 'ChannelsController');
+  Route::resource('discussions', 'DiscussionsController');
+});

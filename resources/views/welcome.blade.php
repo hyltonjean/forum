@@ -8,15 +8,18 @@
   <title>Laravel</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- Styles -->
   <style>
     html,
     body {
-      background-color: #fff;
-      color: #636b6f;
-      font-family: 'Nunito', sans-serif;
+      background-color: #f2f2f2;
+      color: #444;
+      font-family: 'Forum', sans-serif;
       font-weight: 200;
       height: 100vh;
       margin: 0;
@@ -60,8 +63,28 @@
       text-transform: uppercase;
     }
 
-    .m-b-md {
-      margin-bottom: 30px;
+    a.btn:hover {
+      color: white;
+      text-decoration: none;
+      opacity: 1;
+    }
+
+    .github {
+      background-color: #444444;
+      color: white;
+      opacity: 0.85;
+    }
+
+    .linkedin {
+      background-color: #007BB6;
+      color: white;
+      opacity: 0.85;
+    }
+
+    .google {
+      background-color: #dd4b39;
+      color: white;
+      opacity: 0.85;
     }
   </style>
 </head>
@@ -87,10 +110,24 @@
         {{ env('APP_NAME') }}
       </div>
 
-      <div class="links">
-        <a href="{{ route('login.provider', 'github') }}">GitHub</a>
-        <a href="">Facebook</a>
-        <a href="">Google</a>
+
+      <div class="container my-1">
+        <div class="text-center py-3">
+          <h2>Login with Social Media</h2>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12">
+            <a href="{{ route('login.provider', 'github') }}" class="btn github btn-social:hover">
+              <i class="fa fa-github fa-fw"></i> GitHub
+            </a>
+            <a href="{{ route('login.provider', 'linkedin') }}" class="btn linkedin btn-social:hover">
+              <i class="fa fa-linkedin fa-fw"></i> LinkedIn
+            </a>
+            <a href="{{ route('login.provider', 'google') }}" class="btn google btn-social:hover">
+              <i class="fa fa-google fa-fw"></i> Google
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

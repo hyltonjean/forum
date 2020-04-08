@@ -36,16 +36,28 @@ return [
     'redirect' => 'http://forum-laravel.io/login/github/callback',
   ],
 
-  'facebook' => [
-    'client_id' => env('FB_CLIENT_ID'),
-    'client_secret' => env('FB_CLIENT_SECRET'),
-    'redirect' => 'http://your-callback-url',
+  'linkedin' => [
+    'client_id' => env('LINKEDIN_CLIENT_ID'),
+    'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+    'redirect' => 'http://forum-laravel.io/login/linkedin/callback',
   ],
 
   'google' => [
     'client_id' => env('GOOGLE_CLIENT_ID'),
     'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-    'redirect' => 'http://your-callback-url',
+    'redirect' => 'http://forum-laravel.io/login/google/callback',
   ],
+
+  'twitter' => [
+    'client_id' => env('TWITTER_CLIENT_ID'),
+    'client_secret' => env('TWITTER_CLIENT_SECRET'),
+    'redirect' => 'http://forum-laravel.io/login/twitter/callback',
+  ],
+
+  // 'facebook' => [
+  //   'client_id' => env('FB_CLIENT_ID'),
+  //   'client_secret' => env('FB_CLIENT_SECRET'),
+  //   'redirect' => 'http://forum-laravel.io/login/facebook/callback',
+  // ],
 
 ];

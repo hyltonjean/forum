@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Channel;
 use App\Discussion;
-use Illuminate\Support\Str;
-use App\Http\Requests\CreateDiscussionsRequest;
-use App\Http\Requests\UpdateDiscussionsRequest;
+use Illuminate\Http\Request;
 
-class DiscussionsController extends Controller
+class ForumController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -17,7 +14,9 @@ class DiscussionsController extends Controller
    */
   public function index()
   {
-    //
+    $discussions = Discussion::orderBy('created_at', 'desc')->paginate(3);
+
+    return view('forum')->with('discussions', $discussions);
   }
 
   /**
@@ -27,7 +26,7 @@ class DiscussionsController extends Controller
    */
   public function create()
   {
-    return view('discussions.create');
+    //
   }
 
   /**
@@ -36,18 +35,9 @@ class DiscussionsController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(CreateDiscussionsRequest $request)
+  public function store(Request $request)
   {
-    auth()->user()->discussions()->create([
-      'title' => $request->title,
-      'content' => $request->content,
-      'channel_id' => $request->channel_id,
-      'slug' => Str::slug($request->title),
-    ]);
-
-    session()->flash('success', 'Discussion created successfully.');
-
-    return redirect()->back();
+    //
   }
 
   /**
@@ -56,11 +46,9 @@ class DiscussionsController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($slug)
+  public function show($id)
   {
-    $discussion = Discussion::where('slug', $slug)->first();
-
-    return view('discussions.show')->with('discussion', $discussion);
+    //
   }
 
   /**
@@ -69,9 +57,9 @@ class DiscussionsController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit(Discussion $discussion)
+  public function edit($id)
   {
-    return view('discussions.create')->with('discussion', $discussion);
+    //
   }
 
   /**
@@ -81,7 +69,7 @@ class DiscussionsController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(UpdateDiscussionsRequest $request, Discussion $discussion)
+  public function update(Request $request, $id)
   {
     //
   }

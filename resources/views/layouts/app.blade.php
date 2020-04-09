@@ -38,8 +38,8 @@
           <ul class="navbar-nav mr-auto">
             <a href="{{ route('channels.index') }}" class="nav-link lead text-primary">
               Channels</a>
-            <a href="{{ route('discussions.index') }}" class="nav-link lead text-primary">
-              Discussions</a>
+            <a href="{{ route('forum.index') }}" class="nav-link lead text-primary">
+              Forum</a>
           </ul>
 
           <!-- Right Side Of Navbar -->
@@ -80,10 +80,36 @@
 
     @include('partials.success')
 
-    <main class="py-4">
+    <main class="container py-4">
+      <div class="row d-flex justify-content-center">
 
-      @yield('content')
+        @auth
+        <div class="col-md-4">
+          <a href="{{ route('discussions.create') }}" class="btn btn-info text-white mb-4" style="width:100%;">Create a
+            new
+            discussion</a>
+          <div class="card">
+            <h5 class="card-header">
+              Channels
+            </h5>
+            <div class="card-body">
+              <ul class="list-group">
+                @foreach ($channels as $channel)
+                <li class="list-group-item">
+                  <h6>{{ $channel->title }}</h6>
+                </li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          @endauth
 
+          @yield('content')
+
+        </div>
+      </div>
     </main>
   </div>
   <script src="{{ asset('js/app.js') }}"></script>

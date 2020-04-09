@@ -13,10 +13,17 @@ class UsersTableSeeder extends Seeder
   {
     $admin = \App\User::create([
       'name' => 'admin',
-      'email' => 'admin@laravel-forum.io',
+      'email' => 'admin@forum.io',
       'password' => bcrypt('admin'),
       'avatar' => asset('img/avatars/admin.jpg'),
       'admin' => 1,
+    ]);
+
+    $user1 = \App\User::create([
+      'name' => 'John Doe',
+      'email' => 'john@doe.com',
+      'password' => bcrypt('password'),
+      'avatar' => asset('img/avatars/avatar.jpg'),
     ]);
   }
 }

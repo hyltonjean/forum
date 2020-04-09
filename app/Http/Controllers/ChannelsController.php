@@ -14,7 +14,7 @@ class ChannelsController extends Controller
    */
   public function index()
   {
-    return view('channels.index')->withChannels(Channel::all());
+    return view('channels.index');
   }
 
   /**
@@ -22,9 +22,9 @@ class ChannelsController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create(Channel $channel)
+  public function create()
   {
-    return view('channels.create')->withChannel($channel);
+    return view('channels.create');
   }
 
   /**
@@ -63,7 +63,7 @@ class ChannelsController extends Controller
    */
   public function edit(Channel $channel)
   {
-    return view('channels.edit')->withChannel($channel);
+    return view('channels.create')->with('channel', $channel);
   }
 
   /**

@@ -28,4 +28,5 @@ Route::get('login/{provider}/callback', 'SocialsController@Callback')->name('log
 Route::middleware(['auth'])->group(function () {
   Route::resource('channels', 'ChannelsController');
   Route::resource('discussions', 'DiscussionsController');
+  Route::resource('forum', 'ForumController');
 });

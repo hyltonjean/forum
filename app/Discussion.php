@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discussion extends Model
 {
-  protected $fillable = ['title', 'content', 'user_id', 'channel_id'];
+  protected $fillable = ['title', 'slug', 'content', 'user_id', 'channel_id'];
 
   public function user()
   {
@@ -23,5 +23,10 @@ class Discussion extends Model
   public function replies()
   {
     return $this->hasMany(Reply::class);
+  }
+
+  public function getRouteKeyName()
+  {
+    return 'slug';
   }
 }

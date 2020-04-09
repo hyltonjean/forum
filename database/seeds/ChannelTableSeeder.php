@@ -13,7 +13,7 @@ class ChannelTableSeeder extends Seeder
   public function run()
   {
     $channel1 = ['title' => 'Laravel'];
-    $channel2 = ['title' => 'Valet'];
+    $channel2 = ['title' => 'Vuejs'];
     $channel3 = ['title' => 'Nova'];
     $channel4 = ['title' => 'Echo'];
     $channel5 = ['title' => 'Socialite'];

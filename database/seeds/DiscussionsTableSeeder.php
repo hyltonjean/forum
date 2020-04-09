@@ -15,13 +15,13 @@ class DiscussionsTableSeeder extends Seeder
   {
     $t1 = 'Implementing OAUTH2 with laravel passport';
     $t2 = 'Pagination in vuejs not working correctly';
-    $t3 = 'Vuejs event listeners for child components';
+    $t3 = 'Laravel Echo event listeners not working as it should';
     $t4 = 'Laravel homestead error - undetected database';
 
     $d1 = [
       'title' => $t1,
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellat facilis, eos, tenetur ipsam, sed nostrum velit recusandae placeat nam inventore accusamus. Laudantium ipsum repudiandae amet? Maiores, non. Laborum placeat fugiat impedit commodi in sequi fugit suscipit, temporibus officiis nam dolore minima id maxime distinctio? Repudiandae autem mollitia consequuntur aliquam quae ab natus odio, officia eligendi dolorum sunt, magni, qui ut. Accusantium quam iure at id accusamus nihil dolore tenetur ea dolorum, dolores non porro, quisquam, dolor odit? Pariatur, illum ipsa molestiae in obcaecati, ducimus reprehenderit earum voluptatibus modi eum maiores quia ut? Hic consectetur voluptatum quas nulla aliquid aliquam!',
-      'channel_id' => 1,
+      'channel_id' => 10,
       'user_id' => 2,
       'slug' => Str::slug($t1)
     ];
@@ -37,7 +37,7 @@ class DiscussionsTableSeeder extends Seeder
     $d3 = [
       'title' => $t3,
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellat facilis, eos, tenetur ipsam, sed nostrum velit recusandae placeat nam inventore accusamus. Laudantium ipsum repudiandae amet? Maiores, non. Laborum placeat fugiat impedit commodi in sequi fugit suscipit, temporibus officiis nam dolore minima id maxime distinctio? Repudiandae autem mollitia consequuntur aliquam quae ab natus odio, officia eligendi dolorum sunt, magni, qui ut. Accusantium quam iure at id accusamus nihil dolore tenetur ea dolorum, dolores non porro, quisquam, dolor odit? Pariatur, illum ipsa molestiae in obcaecati, ducimus reprehenderit earum voluptatibus modi eum maiores quia ut? Hic consectetur voluptatum quas nulla aliquid aliquam!',
-      'channel_id' => 2,
+      'channel_id' => 4,
       'user_id' => 1,
       'slug' => Str::slug($t3)
     ];
@@ -45,8 +45,8 @@ class DiscussionsTableSeeder extends Seeder
     $d4 = [
       'title' => $t4,
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellat facilis, eos, tenetur ipsam, sed nostrum velit recusandae placeat nam inventore accusamus. Laudantium ipsum repudiandae amet? Maiores, non. Laborum placeat fugiat impedit commodi in sequi fugit suscipit, temporibus officiis nam dolore minima id maxime distinctio? Repudiandae autem mollitia consequuntur aliquam quae ab natus odio, officia eligendi dolorum sunt, magni, qui ut. Accusantium quam iure at id accusamus nihil dolore tenetur ea dolorum, dolores non porro, quisquam, dolor odit? Pariatur, illum ipsa molestiae in obcaecati, ducimus reprehenderit earum voluptatibus modi eum maiores quia ut? Hic consectetur voluptatum quas nulla aliquid aliquam!',
-      'channel_id' => 5,
-      'user_id' => 1,
+      'channel_id' => 8,
+      'user_id' => 2,
       'slug' => Str::slug($t4)
     ];
 

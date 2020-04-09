@@ -31,8 +31,8 @@ class RepliesTableSeeder extends Seeder
     ];
 
     $r4 = [
-      'user_id' => 4,
-      'discussion_id' => 4,
+      'user_id' => 2,
+      'discussion_id' => 2,
       'content' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum consequuntur iure eos sit doloribus quasi animi laboriosam, quidem adipisci officiis. Inventore repellendus minima consequuntur accusamus neque earum, in aliquid. Commodi ea vero hic. Id officiis quia ducimus vitae reiciendis, nobis corrupti omnis praesentium ratione iure temporibus adipisci, sunt optio qui consectetur quod autem iste assumenda dolores, aliquid rerum itaque harum?'
     ];
 

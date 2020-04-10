@@ -29,4 +29,6 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('channels', 'ChannelsController');
   Route::resource('discussions', 'DiscussionsController');
   Route::resource('forum', 'ForumController');
+
+  Route::post('discussion/reply/{id}', 'DiscussionsController@reply')->name('discussion.reply');
 });

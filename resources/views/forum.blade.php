@@ -8,21 +8,22 @@
       alt="{{ $d->user->name }}">&nbsp;&nbsp;&nbsp;
     <span style="font-weight:bold; ">{{ $d->user->name }}</span>
     <a href="{{ route('discussions.show', $d->slug) }}"
-      class="btn btn-primary text-white btn-sm mt-2 float-right">View</a>
+      class="btn btn-success text-white btn-sm mt-2 float-right">View</a>
   </div>
 
   <div class="card-body">
-    <h4 class="text-center">
-      {{ $d->title }}
+    <h4 class="text-center text-secondary">
+      <b>{{ $d->title }}</b>
     </h4>
-    <p class="text-center">
+    <p class="text-center mt-3">
       {{  substr($d->content, 0, 50)  }}
     </p>
   </div>
   <div class="card-footer">
-    <a href="#" class="badge badge-success py-2 mb-0">
+    <span class="badge badge-light text-warning py-2 mb-0">
       {{ $d->replies->count() <= 1 ? $d->replies->count() . " " . "Reply" : $d->replies->count() . " " . "Replies" }}
-    </a>
+    </span>
+    <b class="text-primary float-right">{{ $d->created_at->diffForHumans() }}</b>
   </div>
 </div>
 @endforeach

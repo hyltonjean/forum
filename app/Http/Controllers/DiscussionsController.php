@@ -7,6 +7,7 @@ use App\Discussion;
 use Illuminate\Support\Str;
 use App\Http\Requests\CreateDiscussionsRequest;
 use App\Http\Requests\UpdateDiscussionsRequest;
+use App\Reply;
 
 class DiscussionsController extends Controller
 {
@@ -95,5 +96,20 @@ class DiscussionsController extends Controller
   public function destroy($id)
   {
     //
+  }
+
+  public function reply($id)
+  {
+    $reply = Reply::where('id', $id)->first();
+
+    $reply->create([
+      'user_id' => auth()->user()->id,
+      'discussion_id' => $id,
+      'content' => request()->reply,
+    ]);
+
+    session()->flash('success', 'Reply added successfully');
+
+    return redirect()->back();
   }
 }

@@ -14,7 +14,7 @@
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -89,15 +89,15 @@
             a
             new
             discussion</a>
-          <div class="card">
-            <h5 class="card-header">
+          <div class="card border-dark">
+            <h5 class="card-header bg-dark text-white text-center">
               Channels
             </h5>
-            <div class="card-body">
+            <div class="card-body bg-secondary text-dark">
               <ul class="list-group">
                 @foreach ($channels as $channel)
-                <li class="list-group-item">
-                  <h6>{{ $channel->title }}</h6>
+                <li class="list-group-item text-center text-dark">
+                  <h5>{{ $channel->title }}</h5>
                 </li>
                 @endforeach
               </ul>

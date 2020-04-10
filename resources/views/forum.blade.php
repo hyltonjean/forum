@@ -7,7 +7,8 @@
     <img src="{{ $d->user->avatar }}" width="40px" height="40px" style="border-radius:50%;"
       alt="{{ $d->user->name }}">&nbsp;&nbsp;&nbsp;
     <span style="font-weight:bold; ">{{ $d->user->name }}</span>
-    <a href="{{ route('discussions.show', $d->slug) }}" class="btn btn-info text-white btn-sm mt-2 float-right">View</a>
+    <a href="{{ route('discussions.show', $d->slug) }}"
+      class="btn btn-primary text-white btn-sm mt-2 float-right">View</a>
   </div>
 
   <div class="card-body">

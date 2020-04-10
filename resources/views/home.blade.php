@@ -5,11 +5,6 @@
   <div class="card-header">Laravel Forum</div>
 
   <div class="card-body">
-    @if (session('status'))
-    <div class="alert alert-success" role="alert">
-      {{ session('status') }}
-    </div>
-    @endif
 
     <p>My name: {{Auth::user()->name}}</p>
     <p>My Email: {{Auth::user()->email}}</p>

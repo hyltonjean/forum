@@ -85,7 +85,8 @@
 
         @auth
         <div class="col-md-4">
-          <a href="{{ route('discussions.create') }}" class="btn btn-info text-white mb-4" style="width:100%;">Create a
+          <a href="{{ route('discussions.create') }}" class="btn btn-warning text-white mb-4" style="width:100%;">Create
+            a
             new
             discussion</a>
           <div class="card">

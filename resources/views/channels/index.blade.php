@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h3 class="card-header bg-light border-dark text-center mb-4">Channels</h3>
 <div class="card">
   <div class="card-header">Channels <a href="{{ route('channels.create') }}"
       class="btn btn-success btn-sm float-right">Create
@@ -27,10 +28,10 @@
             {{ $channel->title }}
           </td>
           <td>
-            <a href="{{ route('channels.edit', $channel->id) }}" class="btn btn-sm btn-info text-white">Edit</a>
+            <a href="{{ route('channels.edit', $channel->slug) }}" class="btn btn-sm btn-info text-white">Edit</a>
           </td>
           <td>
-            <form action="{{ route('channels.destroy', $channel->id) }}" method="POST">
+            <form action="{{ route('channels.destroy', $channel->slug) }}" method="POST">
               @csrf
               @method('DELETE')
               <button class="btn btn-sm btn-danger" type="submit">Delete</button>

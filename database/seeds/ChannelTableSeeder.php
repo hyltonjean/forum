@@ -12,16 +12,16 @@ class ChannelTableSeeder extends Seeder
    */
   public function run()
   {
-    $channel1 = ['title' => 'Laravel'];
-    $channel2 = ['title' => 'Vuejs'];
-    $channel3 = ['title' => 'Nova'];
-    $channel4 = ['title' => 'Echo'];
-    $channel5 = ['title' => 'Socialite'];
-    $channel6 = ['title' => 'Vapor'];
-    $channel7 = ['title' => 'Forge'];
-    $channel8 = ['title' => 'Homestead'];
-    $channel9 = ['title' => 'Spark'];
-    $channel10 = ['title' => 'Passport'];
+    $channel1 = ['title' => 'Laravel', 'slug' => Str::slug('Laravel') ];
+    $channel2 = ['title' => 'Vuejs', 'slug' => Str::slug('Vuejs') ];
+    $channel3 = ['title' => 'Nova', 'slug' => Str::slug('Nova') ];
+    $channel4 = ['title' => 'Echo', 'slug' => Str::slug('Echo') ];
+    $channel5 = ['title' => 'Socialite', 'slug' => Str::slug('Socialite') ];
+    $channel6 = ['title' => 'Vapor', 'slug' => Str::slug('Vapor') ];
+    $channel7 = ['title' => 'Forge', 'slug' => Str::slug('Forge') ];
+    $channel8 = ['title' => 'Homestead', 'slug' => Str::slug('Homestead') ];
+    $channel9 = ['title' => 'Spark', 'slug' => Str::slug('Spark') ];
+    $channel10 = ['title' => 'Passport', 'slug' => Str::slug('Passport') ];
 
     Channel::create($channel1);
     Channel::create($channel2);

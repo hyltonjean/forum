@@ -35,10 +35,10 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav mr-auto">
-            <a href="{{ route('channels.index') }}" class="nav-link lead text-primary">
+          <ul class="navbar-nav mr-auto pt-1">
+            <a href="{{ route('channels.index') }}" class="nav-link text-dark">
               Channels</a>
-            <a href="{{ route('forum.index') }}" class="nav-link lead text-primary">
+            <a href="{{ route('forum.index') }}" class="nav-link text-dark">
               Forum</a>
           </ul>
 
@@ -83,21 +83,32 @@
     <main class="container py-4">
       <div class="row d-flex justify-content-center">
 
-        @auth
+
         <div class="col-md-4">
+          @auth
           <a href="{{ route('discussions.create') }}" class="btn btn-warning text-white mb-4" style="width:100%;">Create
-            a
-            new
+            a new discussion</a>
+          @else
+          <a href="{{ route('login') }}" class="btn btn-danger mb-4" style="width:100%;">Sign in to create a new
             discussion</a>
-          <div class="card border-dark">
-            <h5 class="card-header bg-dark text-white text-center">
+          @endauth
+          <ul class="list-group mb-4">
+            <li class="list-group-item">
+              <a href="{{ route('forum.index') }}" style="text-decoration:none;">Home</a>
+            </li>
+          </ul>
+
+          <div class="card">
+            <div class="card-header">
               Channels
-            </h5>
-            <div class="card-body bg-secondary text-dark">
+            </div>
+            <div class="card-body">
               <ul class="list-group">
                 @foreach ($channels as $channel)
-                <li class="list-group-item text-center text-dark">
-                  <h5>{{ $channel->title }}</h5>
+                <li class="list-group-item">
+                  <a href="{{ route('channel', $channel->slug) }}" style="text-decoration:none;">
+                    {{ $channel->title }}
+                  </a>
                 </li>
                 @endforeach
               </ul>
@@ -105,7 +116,6 @@
           </div>
         </div>
         <div class="col-md-8">
-          @endauth
 
           @yield('content')
 

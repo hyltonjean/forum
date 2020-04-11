@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Reply;
 use App\Channel;
 use App\Discussion;
 use Illuminate\Support\Str;
+use App\Notifications\NewReplyAdded;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\CreateDiscussionsRequest;
 use App\Http\Requests\UpdateDiscussionsRequest;
-use App\Reply;
 
 class DiscussionsController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['auth'])->only(['edit', 'store', 'update', 'create']);
+  }
   /**
    * Display a listing of the resource.
    *
@@ -57,11 +64,14 @@ class DiscussionsController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($slug)
+  public function show(Discussion $discussion)
   {
-    $discussion = Discussion::where('slug', $slug)->first();
+    // $discussion = Discussion::where('slug', $slug)->first();
+    $best_answer = $discussion->replies()->where('best_answer', 1)->first();
 
-    return view('discussions.show')->with('discussion', $discussion);
+    return view('discussions.show')
+      ->with('discussion', $discussion)
+      ->with('best_answer', $best_answer);
   }
 
   /**
@@ -100,15 +110,26 @@ class DiscussionsController extends Controller
 
   public function reply($id)
   {
-    $reply = Reply::where('id', $id)->first();
+    $d = Discussion::find($id);
 
-    $reply->create([
+    $reply = Reply::create([
       'user_id' => auth()->user()->id,
       'discussion_id' => $id,
       'content' => request()->reply,
     ]);
 
-    session()->flash('success', 'Reply added successfully');
+    $reply->user->points += 25;
+    $reply->user->save();
+
+    $watchers = array();
+
+    foreach ($d->watchers as $watcher) {
+      array_push($watchers, User::find($watcher->user_id));
+    }
+
+    Notification::send($watchers, new NewReplyAdded($d));
+
+    session()->flash('success', 'Replied to discussion.');
 
     return redirect()->back();
   }

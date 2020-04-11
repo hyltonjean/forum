@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
+use Illuminate\Support\Str;
 use App\Http\Requests\CreateChannelsRequest;
 
 class ChannelsController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['auth'])->except(['index']);
+  }
   /**
    * Display a listing of the resource.
    *
@@ -36,7 +41,8 @@ class ChannelsController extends Controller
   public function store(CreateChannelsRequest $request)
   {
     $channel = Channel::create([
-      'title' => $request->title
+      'title' => $request->title,
+      'slug' => Str::slug($request->title)
     ]);
 
     session()->flash('success', 'Channel created successfully.');
@@ -50,7 +56,7 @@ class ChannelsController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show()
   {
     //
   }
@@ -77,6 +83,7 @@ class ChannelsController extends Controller
   {
 
     $channel->title = request()->title;
+    $channel->slug = Str::slug(request()->title);
 
     $channel->save();
 

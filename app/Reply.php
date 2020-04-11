@@ -36,7 +36,7 @@ class Reply extends Model
       foreach($this->likes as $like) {
         array_push($likers, $like->user_id);
       }
-
+      
       if(in_array($id, $likers))
       {
         return true;

@@ -8,7 +8,7 @@
   <title>Laravel</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Gotu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   {{-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> --}}
 
@@ -16,9 +16,9 @@
   <style>
     html,
     body {
-      background-color: #f2f2f2;
-      color: #777;
-      font-family: 'Gotu', sans-serif;
+      background-color: #fff;
+      color: #444;
+      font-family: 'Baloo Paaji 2', sans-serif;
       font-weight: 200;
       height: 100vh;
       margin: 0;
@@ -93,13 +93,7 @@
     @if (Route::has('login'))
     <div class="top-right links">
       @auth
-      <a href="{{ url('/home') }}" class="btn btn-info py-2 text-white">Home</a>
-      @else
-      <a href="{{ route('login') }}" class="btn btn-primary py-2 text-white">Login</a>
-
-      @if (Route::has('register'))
-      <a href="{{ route('register') }}" class="btn btn-primary ml-2 py-2 text-white">Register</a>
-      @endif
+      <a href="{{ url('/forum') }}" class="text-primary">Home</a>
       @endauth
     </div>
     @endif
@@ -109,6 +103,9 @@
         {{ env('APP_NAME') }}
       </div>
 
+      <a href="{{ route('login') }}" class="nav-link text-danger">
+        <h5>Login or SignUp</h5>
+      </a>
 
       {{-- <div class="container my-1">
         <div class="text-center py-3">

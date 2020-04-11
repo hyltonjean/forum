@@ -5,7 +5,7 @@
 
   <div class="card-header">{{ isset($channel) ? "Update a channel" : "Create a new channel" }}</div>
   <div class="card-body">
-    <form action="{{ isset($channel) ? route('channels.update', $channel->id) : route('channels.store') }}"
+    <form action="{{ isset($channel) ? route('channels.update', $channel->slug) : route('channels.store') }}"
       method="POST">
       @csrf
       @if(isset($channel))

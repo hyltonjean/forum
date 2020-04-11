@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h3 class="card-header bg-light border-dark text-center">Discussions</h3>
 @foreach ($discussions as $d)
 <div class="card my-4">
   <div class="card-header">
@@ -11,7 +10,7 @@
     <span style="font-weight:bold;">( {{ $d->user->points }} )</span>
 
     <a href="{{ route('discussions.show', $d->slug) }}"
-      class="btn btn-outline-dark bg-white text-dark mt-2 float-right">View</a>
+      class="btn btn-outline-dark text-dark bg-white mt-2 float-right">View</a>
   </div>
 
   <div class="card-body">
@@ -26,7 +25,6 @@
     <span class="badge badge-light text-dark py-2 mb-0">
       {{ $d->replies->count() <= 1 ? $d->replies->count() . " " . "Reply" : $d->replies->count() . " " . "Replies" }}
     </span>
-
     <span class="float-right"><a href="{{ route('channel', $d->channel->slug) }}"
         class="btn btn-outline-dark text-dark bg-white btn-sm">{{ $d->channel->title }}</a></span>
   </div>

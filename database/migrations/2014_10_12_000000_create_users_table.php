@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
       $table->string('provider')->nullable();
       $table->string('provider_id')->nullable();
 
+      $table->bigInteger('points')->default(50);
+
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password')->nullable();
       $table->rememberToken();

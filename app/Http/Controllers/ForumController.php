@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Discussion;
 use Illuminate\Http\Request;
 
@@ -83,5 +84,10 @@ class ForumController extends Controller
   public function destroy($id)
   {
     //
+  }
+
+  public function channel(Channel $channel)
+  {
+    return view('channel')->with('discussions', $channel->discussions()->paginate(5));
   }
 }

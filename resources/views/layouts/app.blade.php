@@ -19,6 +19,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css">
   @yield('css')
 </head>
 
@@ -145,6 +146,10 @@
     @if(session()->has('error'))
     toastr.error('{{ session()->get('error') }}')
     @endif
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
   </script>
   @yield('scripts')
 </body>

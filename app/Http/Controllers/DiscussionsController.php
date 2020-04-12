@@ -8,6 +8,7 @@ use App\Channel;
 use App\Discussion;
 use Illuminate\Support\Str;
 use App\Notifications\NewReplyAdded;
+use App\Http\Requests\CreateRepliesRequest;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\CreateDiscussionsRequest;
 use App\Http\Requests\UpdateDiscussionsRequest;
@@ -94,7 +95,18 @@ class DiscussionsController extends Controller
    */
   public function update(UpdateDiscussionsRequest $request, Discussion $discussion)
   {
-    //
+
+    $discussion->title = $request->title;
+    $discussion->content = $request->content;
+    $discussion->channel_id = $request->channel_id;
+    $discussion->slug = Str::slug($request->title);
+
+    $discussion->save();
+
+
+    session()->flash('success', 'Updated discussion successfully.');
+
+    return redirect('/forum');
   }
 
   /**
@@ -103,9 +115,13 @@ class DiscussionsController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Discussion $discussion)
   {
-    //
+    $discussion->delete();
+
+    session()->flash('success', 'Discussion deleted successfully.');
+
+    return redirect('/forum');
   }
 
   public function reply($id)
@@ -132,5 +148,24 @@ class DiscussionsController extends Controller
     session()->flash('success', 'Replied to discussion.');
 
     return redirect()->back();
+  }
+
+  public function reply_edit($id)
+  {
+    $reply = Reply::find($id);
+
+    return view('replies.edit')->with('reply', $reply);
+  }
+
+  public function reply_update($id)
+  {
+    $reply = Reply::find($id);
+
+    $reply->content = request()->content;
+    $reply->save();
+
+    session()->flash('success', 'Reply has been updated.');
+
+    return redirect(route('discussions.show', $reply->discussion->slug));
   }
 }

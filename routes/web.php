@@ -36,5 +36,7 @@ Route::middleware(['auth'])->group(function () {
   Route::post('discussion/reply/{id}', 'DiscussionsController@reply')->name('discussion.reply');
   Route::get('/reply/like/{id}', 'RepliesController@like')->name('reply.like');
   Route::get('/reply/unlike/{id}', 'RepliesController@unlike')->name('reply.unlike');
+  Route::get('/reply/{id}/edit', 'DiscussionsController@reply_edit')->name('reply.edit');
+  Route::put('/reply/update/{id}', 'DiscussionsController@reply_update')->name('reply.update');
   Route::get('/discussion/reply/best-answer/{id}', 'RepliesController@best_answer')->name('discussion.best_answer');
 });

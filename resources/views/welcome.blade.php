@@ -100,7 +100,7 @@
 
     <div class="content">
       <div class="title m-b-md">
-        {{ env('APP_NAME') }}
+        <a href="{{ route('forum.index') }}" style="text-decoration:none; color:#333;">{{ env('APP_NAME') }}</a>
       </div>
 
       <a href="{{ route('login') }}" class="nav-link text-danger">

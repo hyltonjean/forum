@@ -22,7 +22,7 @@ class DiscussionsTableSeeder extends Seeder
       'title' => $t1,
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellat facilis, eos, tenetur ipsam, sed nostrum velit recusandae placeat nam inventore accusamus. Laudantium ipsum repudiandae amet? Maiores, non. Laborum placeat fugiat impedit commodi in sequi fugit suscipit, temporibus officiis nam dolore minima id maxime distinctio? Repudiandae autem mollitia consequuntur aliquam quae ab natus odio, officia eligendi dolorum sunt, magni, qui ut. Accusantium quam iure at id accusamus nihil dolore tenetur ea dolorum, dolores non porro, quisquam, dolor odit? Pariatur, illum ipsa molestiae in obcaecati, ducimus reprehenderit earum voluptatibus modi eum maiores quia ut? Hic consectetur voluptatum quas nulla aliquid aliquam!',
       'channel_id' => 10,
-      'user_id' => 2,
+      'user_id' => 1,
       'slug' => Str::slug($t1)
     ];
 
@@ -30,7 +30,7 @@ class DiscussionsTableSeeder extends Seeder
       'title' => $t2,
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellat facilis, eos, tenetur ipsam, sed nostrum velit recusandae placeat nam inventore accusamus. Laudantium ipsum repudiandae amet? Maiores, non. Laborum placeat fugiat impedit commodi in sequi fugit suscipit, temporibus officiis nam dolore minima id maxime distinctio? Repudiandae autem mollitia consequuntur aliquam quae ab natus odio, officia eligendi dolorum sunt, magni, qui ut. Accusantium quam iure at id accusamus nihil dolore tenetur ea dolorum, dolores non porro, quisquam, dolor odit? Pariatur, illum ipsa molestiae in obcaecati, ducimus reprehenderit earum voluptatibus modi eum maiores quia ut? Hic consectetur voluptatum quas nulla aliquid aliquam!',
       'channel_id' => 2,
-      'user_id' => 1,
+      'user_id' => 3,
       'slug' => Str::slug($t2)
     ];
 
@@ -38,7 +38,7 @@ class DiscussionsTableSeeder extends Seeder
       'title' => $t3,
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellat facilis, eos, tenetur ipsam, sed nostrum velit recusandae placeat nam inventore accusamus. Laudantium ipsum repudiandae amet? Maiores, non. Laborum placeat fugiat impedit commodi in sequi fugit suscipit, temporibus officiis nam dolore minima id maxime distinctio? Repudiandae autem mollitia consequuntur aliquam quae ab natus odio, officia eligendi dolorum sunt, magni, qui ut. Accusantium quam iure at id accusamus nihil dolore tenetur ea dolorum, dolores non porro, quisquam, dolor odit? Pariatur, illum ipsa molestiae in obcaecati, ducimus reprehenderit earum voluptatibus modi eum maiores quia ut? Hic consectetur voluptatum quas nulla aliquid aliquam!',
       'channel_id' => 4,
-      'user_id' => 1,
+      'user_id' => 4,
       'slug' => Str::slug($t3)
     ];
 

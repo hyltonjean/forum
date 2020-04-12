@@ -21,7 +21,7 @@
       </div>
       <div class="form-group text-center">
         <button type="submit"
-          class="btn btn-success btn-sm">{{ isset($channel) ? "Update channel" : "Create channel" }}</button>
+          class="btn btn-outline-dark text-dark bg-white btn-sm">{{ isset($channel) ? "Update channel" : "Create channel" }}</button>
       </div>
     </form>
   </div>

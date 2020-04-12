@@ -5,7 +5,8 @@
   <h5 class="card-header text-center">{{ isset($discussion) ? "Update a discussion" : "Create a new discussion" }}</h5>
 
   <div class="card-body">
-    <form action="{{ isset($discussion) ? route('discussions.update', $discussion->id) : route('discussions.store') }}"
+    <form
+      action="{{ isset($discussion) ? route('discussions.update', $discussion->slug) : route('discussions.store') }}"
       method="POST">
       @csrf
 
@@ -16,7 +17,7 @@
       <div class="form-group">
         <label for="title" style="font-weight: bold;">Title</label>
         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
-          placeholder="Enter a title" value="{{ isset($discussion) ? $discussion->title : "" }}">
+          placeholder="Enter a title" value="{{ isset($discussion) ? $discussion->title : old('title') }}">
         @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -25,7 +26,7 @@
       <div class="form-group">
         <label for="channel_id" style="font-weight: bold;">Pick a channel</label>
         <br />
-        <select name="channel_id" id="channel_id" class="form-control @error('channel_id') is-invalid @enderror">
+        <select name="channel_id" id="channel_id" class="form-control">
 
           @if(isset($discussion))
           <option value="{{ $discussion->channel_id }}">
@@ -40,16 +41,13 @@
           @endif
 
         </select>
-        @error('channel_id')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
       </div>
 
       <div class="form-group">
         <label for="content" style="font-weight: bold;">Ask a question</label>
         <textarea name="content" id="content" cols="6" rows="6"
           class="form-control @error('content') is-invalid @enderror"
-          placeholder="Ask your question.">{{ isset($discussion) ? $discussion->content : "" }}</textarea>
+          placeholder="Ask your question.">{{ isset($discussion) ? Markdown::convertToHtml($discussion->content) : old('content') }}</textarea>
         @error('content')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -58,7 +56,7 @@
 
       <div class="form-group text-right">
         <button type="submit"
-          class="btn btn-success">{{ isset($discussion) ? "Update discussion" : "Create discussion" }}</button>
+          class="btn btn-outline-dark bg-white text-dark">{{ isset($discussion) ? "Update discussion" : "Create discussion" }}</button>
       </div>
     </form>
   </div>

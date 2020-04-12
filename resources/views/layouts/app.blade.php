@@ -18,6 +18,7 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   @yield('css')
 </head>
 
@@ -35,11 +36,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav mr-auto pt-1">
-            <a href="{{ route('channels.index') }}" class="nav-link text-dark">
-              Channels</a>
-            <a href="{{ route('forum.index') }}" class="nav-link text-dark">
-              Forum</a>
+          <ul class="navbar-nav mr-auto">
+
           </ul>
 
           <!-- Right Side Of Navbar -->
@@ -78,15 +76,14 @@
       </div>
     </nav>
 
-    @include('partials.success')
-
     <main class="container py-4">
       <div class="row d-flex justify-content-center">
 
 
         <div class="col-md-4">
           @auth
-          <a href="{{ route('discussions.create') }}" class="btn btn-warning text-white mb-4" style="width:100%;">Create
+          <a href="{{ route('discussions.create') }}" class="btn btn-outline-primary text-primary bg-white mb-4"
+            style="width:100%;">Create
             a new discussion</a>
           @else
           <a href="{{ route('login') }}" class="btn btn-danger mb-4" style="width:100%;">Sign in to create a new
@@ -94,8 +91,24 @@
           @endauth
           <ul class="list-group mb-4">
             <li class="list-group-item">
-              <a href="{{ route('forum.index') }}" style="text-decoration:none;">Home</a>
+              <a href="/forum" style="text-decoration:none;">Forum</a>
             </li>
+            @auth
+            @if(auth()->user()->admin)
+            <li class="list-group-item">
+              <a href="{{ route('channels.index') }}" style="text-decoration:none;">All Channels</a>
+            </li>
+            @endif
+            <li class="list-group-item">
+              <a href="/forum?filter=me" style="text-decoration:none;">My Discussions</a>
+            </li>
+            <li class="list-group-item">
+              <a href="/forum?filter=solved" style="text-decoration:none;">Solved Discussions</a>
+            </li>
+            <li class="list-group-item">
+              <a href="/forum?filter=unsolved" style="text-decoration:none;">Unsolved Discussions</a>
+            </li>
+            @endauth
           </ul>
 
           <div class="card">
@@ -124,6 +137,15 @@
     </main>
   </div>
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
+    @if(session()->has('success'))
+    toastr.success('{{ session()->get('success') }}')
+    @endif
+    @if(session()->has('error'))
+    toastr.error('{{ session()->get('error') }}')
+    @endif
+  </script>
   @yield('scripts')
 </body>
 

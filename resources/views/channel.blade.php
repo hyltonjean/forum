@@ -11,9 +11,9 @@
     <a href="{{ route('discussions.show', $d->slug) }}"
       class="btn btn-outline-dark bg-white text-dark btn-sm ml-3 float-right">View</a>
     @if ($d->hasBestAnswer())
-    <a href="#" class="btn btn-outline-dark text-dark bg-white btn-sm float-right">Closed</a>
+    <div class="btn-outline-dark text-dark bg-white btn-sm float-right" style="border:1px solid #333;">Closed</div>
     @else
-    <a href="#" class="btn btn-outline-dark text-dark bg-white btn-sm float-right">Open</a>
+    <div class="btn-outline-dark text-dark bg-white btn-sm float-right" style="border:1px solid #333;">Open</div>
     @endif
   </div>
 

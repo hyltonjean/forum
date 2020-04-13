@@ -16,10 +16,16 @@
   <style>
     html,
     body {
-      background-color: #fff;
-      color: #444;
+      min-height: 100%;
+      background: #fff url('img/home.jpg') no-repeat fixed center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      box-shadow: inset 0 0 0 2000px rgba(55, 50, 100, 0.3);
+      color: #fff;
       font-family: 'Baloo Paaji 2', sans-serif;
-      font-weight: 200;
+      font-weight: 500;
       height: 100vh;
       margin: 0;
     }
@@ -90,20 +96,13 @@
 
 <body>
   <div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-    <div class="top-right links">
-      @auth
-      <a href="{{ url('/forum') }}" class="text-primary">Home</a>
-      @endauth
-    </div>
-    @endif
 
     <div class="content">
       <div class="title m-b-md">
-        <a href="{{ route('forum.index') }}" style="text-decoration:none; color:#333;">{{ env('APP_NAME') }}</a>
+        <a href="{{ route('forum.index') }}" style="text-decoration:none;color:#fff">{{ env('APP_NAME') }}</a>
       </div>
 
-      <a href="{{ route('login') }}" class="nav-link text-danger">
+      <a href="{{ route('login') }}" class="nav-link text-white">
         <h5>Login or SignUp</h5>
       </a>
 

@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Reply;
-use App\Channel;
 use App\Discussion;
 use Illuminate\Support\Str;
 use App\Notifications\NewReplyAdded;
-use App\Http\Requests\CreateRepliesRequest;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\CreateDiscussionsRequest;
 use App\Http\Requests\UpdateDiscussionsRequest;
@@ -117,21 +115,17 @@ class DiscussionsController extends Controller
    */
   public function destroy(Discussion $discussion)
   {
-    $discussion->delete();
-
-    session()->flash('success', 'Discussion deleted successfully.');
-
-    return redirect('/forum');
+    //
   }
 
-  public function reply(CreateRepliesRequest $request, $id)
+  public function reply($id)
   {
     $d = Discussion::find($id);
 
     $reply = Reply::create([
       'user_id' => auth()->user()->id,
       'discussion_id' => $id,
-      'content' => $request->reply,
+      'content' => request()->reply,
     ]);
 
     $reply->user->points += 25;
@@ -148,24 +142,5 @@ class DiscussionsController extends Controller
     session()->flash('success', 'Replied to discussion.');
 
     return redirect()->back();
-  }
-
-  public function reply_edit($id)
-  {
-    $reply = Reply::find($id);
-
-    return view('replies.edit')->with('reply', $reply);
-  }
-
-  public function reply_update(CreateRepliesRequest $request, $id)
-  {
-    $reply = Reply::find($id);
-
-    $reply->content = $request->content;
-    $reply->save();
-
-    session()->flash('success', 'Reply has been updated.');
-
-    return redirect(route('discussions.show', $reply->discussion->slug));
   }
 }

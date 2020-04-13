@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Like;
 use App\Reply;
-use Illuminate\Http\Request;
 
 class RepliesController extends Controller
 {
@@ -46,5 +45,28 @@ class RepliesController extends Controller
     session()->flash('success', 'Reply has been marked as best answer.');
 
     return redirect()->back();
+  }
+
+  public function edit($id)
+  {
+    $reply = Reply::find($id);
+
+    return view('replies.edit')->with('reply', $reply);
+  }
+
+  public function update($id)
+  {
+    request()->validate([
+      'content' => 'required',
+    ]);
+
+    $reply = Reply::find($id);
+
+    $reply->content = request()->content;
+    $reply->save();
+
+    session()->flash('success', 'Reply has been updated.');
+
+    return redirect(route('discussions.show', $reply->discussion->slug));
   }
 }

@@ -17,7 +17,7 @@
       <div class="form-group">
         <label for="title" style="font-weight: bold;">Title</label>
         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
-          placeholder="Enter a title" value="{{ isset($discussion) ? $discussion->title : old('title') }}">
+          placeholder="Enter a title" value="{{ isset($discussion) ? $discussion->title : "" }}">
         @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -47,7 +47,7 @@
         <label for="content" style="font-weight: bold;">Ask a question</label>
         <textarea name="content" id="content" cols="6" rows="6"
           class="form-control @error('content') is-invalid @enderror"
-          placeholder="Ask your question.">{{ isset($discussion) ? Markdown::convertToHtml($discussion->content) : old('content') }}</textarea>
+          placeholder="Ask your question.">{{ isset($discussion) ? $discussion->content : "" }}</textarea>
         @error('content')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror

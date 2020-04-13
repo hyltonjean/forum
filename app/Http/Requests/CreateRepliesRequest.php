@@ -24,8 +24,6 @@ class CreateRepliesRequest extends FormRequest
   public function rules()
   {
     return [
-      'user_id' => 'required',
-      'discussion_id' => 'required',
       'content' => 'required',
     ];
   }

@@ -124,14 +124,14 @@ class DiscussionsController extends Controller
     return redirect('/forum');
   }
 
-  public function reply($id)
+  public function reply(CreateRepliesRequest $request, $id)
   {
     $d = Discussion::find($id);
 
     $reply = Reply::create([
       'user_id' => auth()->user()->id,
       'discussion_id' => $id,
-      'content' => request()->reply,
+      'content' => $request->reply,
     ]);
 
     $reply->user->points += 25;
@@ -157,11 +157,11 @@ class DiscussionsController extends Controller
     return view('replies.edit')->with('reply', $reply);
   }
 
-  public function reply_update($id)
+  public function reply_update(CreateRepliesRequest $request, $id)
   {
     $reply = Reply::find($id);
 
-    $reply->content = request()->content;
+    $reply->content = $request->content;
     $reply->save();
 
     session()->flash('success', 'Reply has been updated.');

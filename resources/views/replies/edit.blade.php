@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="content" style="font-weight: bold;">Edit reply</label>
         <textarea name="content" id="content" cols="6" rows="6"
-          class="form-control @error('content') is-invalid @enderror">{{ Markdown::convertToHtml($reply->content) }}</textarea>
+          class="form-control @error('content') is-invalid @enderror">{{ $reply->content }}</textarea>
         @error('content')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror

@@ -51,7 +51,7 @@
       <h3 class="text-center text-white pb-3">BEST ANSWER</h3>
     </div>
     <div class="card-body border-info">
-      {!! $best_answer->content !!}
+      {!! Markdown::convertToHtml($best_answer->content) !!}
     </div>
   </div>
   @endif
